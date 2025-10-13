@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX to Word Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="icon">📄</span>
+                LaTeX to Word Converter
+            </h1>
+            <p class="subtitle">Convert your LaTeX files to Word documents instantly</p>
+        </header>
+
+        <main class="main">
+            <div class="upload-card">
+                <form action="{{ url_for('convert_file') }}" method="post" enctype="multipart/form-data" class="upload-form">
+                    <div class="file-input-container">
+                        <input type="file" id="file" name="file" accept=".tex" class="file-input" required>
+                        <label for="file" class="file-label">
+                            <div class="file-icon">📁</div>
+                            <div class="file-text">
+                                <span class="file-title">Choose LaTeX file</span>
+                                <span class="file-subtitle">or drag and drop here</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="convert-btn">
+                        <span class="btn-icon">🔄</span>
+                        Convert to Word
+                    </button>
+                </form>
+            </div>
+
+            <div class="info-section">
+                <h3>How it works:</h3>
+                <ol>
+                    <li>Upload your <code>.tex</code> file</li>
+                    <li>Click "Convert to Word"</li>
+                    <li>Download your <code>.docx</code> file</li>
+                </ol>
+            </div>
+
+            <div class="features">
+                <h3>Features:</h3>
+                <ul>
+                    <li>✅ Preserves formatting and structure</li>
+                    <li>✅ Embeds images automatically</li>
+                    <li>✅ Handles tables and lists</li>
+                    <li>✅ Fast conversion process</li>
+                </ul>
+            </div>
+        </main>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <div class="flash-message error">
+                            <span class="flash-icon">⚠️</span>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        // File input handling
+        const fileInput = document.getElementById('file');
+        const fileLabel = document.querySelector('.file-label');
+        const convertBtn = document.querySelector('.convert-btn');
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                fileLabel.querySelector('.file-title').textContent = file.name;
+                fileLabel.querySelector('.file-subtitle').textContent = `${(file.size / 1024).toFixed(1)} KB`;
+                convertBtn.disabled = false;
+                convertBtn.classList.add('enabled');
+            }
+        });
+
+        // Drag and drop functionality
+        fileLabel.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            fileLabel.classList.add('drag-over');
+        });
+
+        fileLabel.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            fileLabel.classList.remove('drag-over');
+        });
+
+        fileLabel.addEventListener('drop', function(e) {
+            e.preventDefault();
+            fileLabel.classList.remove('drag-over');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.name.endsWith('.tex')) {
+                    fileInput.files = files;
+                    fileLabel.querySelector('.file-title').textContent = file.name;
+                    fileLabel.querySelector('.file-subtitle').textContent = `${(file.size / 1024).toFixed(1)} KB`;
+                    convertBtn.disabled = false;
+                    convertBtn.classList.add('enabled');
+                } else {
+                    alert('Please select a .tex file');
+                }
+            }
+        });
+
+        // Form submission handling
+        document.querySelector('.upload-form').addEventListener('submit', function(e) {
+            const file = fileInput.files[0];
+            if (!file) {
+                e.preventDefault();
+                alert('Please select a file first');
+                return;
+            }
+            
+            convertBtn.innerHTML = '<span class="btn-icon">⏳</span>Converting...';
+            convertBtn.disabled = true;
+            
+            // Reset button state after a delay (to handle successful conversions)
+            setTimeout(function() {
+                convertBtn.innerHTML = '<span class="btn-icon">🔄</span>Convert to Word';
+                convertBtn.disabled = false;
+                convertBtn.classList.remove('enabled');
+                
+                // Reset file input
+                fileInput.value = '';
+                fileLabel.querySelector('.file-title').textContent = 'Choose LaTeX file';
+                fileLabel.querySelector('.file-subtitle').textContent = 'or drag and drop here';
+            }, 3000); // 3 second delay to allow for conversion and download
+        });
+    </script>
+</body>
+</html>
