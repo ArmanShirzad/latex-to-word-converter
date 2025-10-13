@@ -19,7 +19,7 @@ A modern web application that converts LaTeX files to Word documents with high f
 
 ## Live Demo
 
-Visit the live application: [https://your-demo-url.com](https://your-demo-url.com)
+Visit the live application: [https://latex-to-word-converter-production.up.railway.app](https://latex-to-word-converter-production.up.railway.app)
 
 ## Screenshots
 
@@ -111,7 +111,9 @@ latex-to-word-converter/
 
 The app is ready for deployment on any platform that supports Python/Flask:
 
+- **Live Demo**: [https://latex-to-word-converter-production.up.railway.app](https://latex-to-word-converter-production.up.railway.app)
 - **Local Development**: `python app.py`
+- **Railway**: Deployed with Dockerfile including Pandoc installation
 - **Production**: Use gunicorn or similar WSGI server
 - **Docker**: Easy to containerize
 - **Cloud**: Deploy to Heroku, AWS, Google Cloud, etc.
