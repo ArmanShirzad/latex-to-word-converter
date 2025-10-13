@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y \
     pandoc \
     && rm -rf /var/lib/apt/lists/*
 
+# Verify Pandoc installation
+RUN pandoc --version
+
 # Set working directory
 WORKDIR /app
 
