@@ -168,5 +168,10 @@ if __name__ == '__main__':
     print("🚀 Starting LaTeX to Word Converter Web App...")
     print("📁 Upload folder:", UPLOAD_FOLDER)
     print("📁 Output folder:", OUTPUT_FOLDER)
-    print("🌐 Open your browser and go to: http://localhost:5000")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    
+    # Get port from environment variable (Railway provides this)
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV') == 'development'
+    
+    print(f"🌐 Starting server on port {port}")
+    app.run(debug=debug, host='0.0.0.0', port=port)
