@@ -148,6 +148,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Pandoc](https://pandoc.org/) for LaTeX to Word conversion
 - [python-docx](https://python-docx.readthedocs.io/) for Word document manipulation
 - [Flask](https://flask.palletsprojects.com/) for the web framework
+- [GitHub](https://github.com/) for hosting and collaboration tools
 
 ## Roadmap
 
