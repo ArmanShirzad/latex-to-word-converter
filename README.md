@@ -16,6 +16,7 @@ A modern web application that converts LaTeX files to Word documents with high f
 - **File Management**: Automatic cleanup of temporary files
 - **Security**: File size limits and type validation
 - **Error Handling**: User-friendly error messages
+- **Cross-platform**: Works on Windows, macOS, and Linux
 
 ## Live Demo
 
