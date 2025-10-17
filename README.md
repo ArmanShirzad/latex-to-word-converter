@@ -38,7 +38,7 @@ The application features a modern gradient background with a clean white upload 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/latex-to-word-converter.git
+   git clone https://github.com/ArmanShirzad/latex-to-word-converter.git
    cd latex-to-word-converter
    ```
 
