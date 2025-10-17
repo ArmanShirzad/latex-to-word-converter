@@ -1,6 +1,6 @@
 # LaTeX to Word Converter
 
-A modern web application that converts LaTeX files to Word documents with high fidelity formatting preservation.
+A modern web application that converts LaTeX files to Word documents with high fidelity formatting preservation and automatic image embedding.
 
 ![LaTeX to Word Converter](https://img.shields.io/badge/LaTeX-Word%20Converter-blue?style=for-the-badge&logo=latex)
 ![Python](https://img.shields.io/badge/Python-3.12+-green?style=for-the-badge&logo=python)
