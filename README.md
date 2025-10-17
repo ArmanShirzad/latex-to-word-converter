@@ -133,12 +133,15 @@ We welcome contributions! Please feel free to submit issues and enhancement requ
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Author
+## Authors
 
 **Arman Shirzad**
 - GitHub: [@ArmanShirzad](https://github.com/ArmanShirzad)
 - LinkedIn: [arman-shirzad](https://linkedin.com/in/arman-shirzad)
 - Website: [armanshirzad.guru](https://armanshirzad.guru)
+
+**Mahdi Ahmadi**
+- Email: [mahdi73.ahmadi@gmail.com](mailto:mahdi73.ahmadi@gmail.com)
 
 ## Acknowledgments
 
